@@ -15,7 +15,6 @@ async function bootstrap() {
     // THAY THẾ CHUỖI NÀY BẰNG URL FRONTEND ĐÃ TRIỂN KHAI CỦA BẠN (ví dụ: Vercel/Netlify)
     origin: [
       `http://localhost:5173`, 
-      'http://localhost:3000',
       'https://tinphan247.github.io/User-Registration-API-with-React-Frontend' // << SỬA ĐIỂM NÀY
     ],
     credentials: true,
