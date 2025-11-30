@@ -16,7 +16,7 @@ async function bootstrap() {
     origin: [
       `http://localhost:5173`, 
       'http://localhost:3000',
-      'https://<ten-domain-cua-frontend>.vercel.app' // << SỬA ĐIỂM NÀY
+      'https://tinphan247.github.io/User-Registration-API-with-React-Frontend' // << SỬA ĐIỂM NÀY
     ],
     credentials: true,
   });
