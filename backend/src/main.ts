@@ -10,7 +10,8 @@ async function bootstrap() {
     origin: [
       'http://localhost:5173',
       'http://localhost:3000',
-      'https://tinphan247.github.io/User-Registration-API-with-React-Frontend', // Thay your-username
+      'https://tinphan247.github.io/User-Registration-API-with-React-Frontend',
+      'https://tinphan247.github.io', // Thay your-username
     ],
     credentials: true,
   });
