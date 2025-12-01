@@ -1,5 +1,3 @@
-// backend/src/main.ts
-
 import { NestFactory } from '@nestjs/core';
 import { ValidationPipe } from '@nestjs/common';
 import { AppModule } from './app.module';
@@ -7,20 +5,16 @@ import { AppModule } from './app.module';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
-  // Lấy PORT từ biến môi trường hoặc dùng 3000 (Local)
-  const port = process.env.PORT || 3000; 
-
-  // Enable CORS
+  // Enable CORS cho production
   app.enableCors({
-    // THAY THẾ CHUỖI NÀY BẰNG URL FRONTEND ĐÃ TRIỂN KHAI CỦA BẠN (ví dụ: Vercel/Netlify)
     origin: [
-      `http://localhost:5173`, 
-      'https://tinphan247.github.io/User-Registration-API-with-React-Frontend' // << SỬA ĐIỂM NÀY
+      'http://localhost:5173',
+      'http://localhost:3000',
+      'https://tinphan247.github.io/User-Registration-API-with-React-Frontend', // Thay your-username
     ],
     credentials: true,
   });
-  
-  // ... (Giữ nguyên Global validation pipe)
+
   app.useGlobalPipes(
     new ValidationPipe({
       whitelist: true,
@@ -29,7 +23,8 @@ async function bootstrap() {
     }),
   );
 
-  await app.listen(port);
-  console.log(`🚀 Application is running on port: ${port}`);
+  const port = process.env.PORT || 3000;
+  await app.listen(port, '0.0.0.0'); // Quan trọng: bind to 0.0.0.0
+  console.log(`🚀 Application is running on: http://localhost:${port}`);
 }
 bootstrap();
