@@ -6,9 +6,8 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { AlertCircle, CheckCircle2, Loader2, User, Lock, Mail, Home } from 'lucide-react';
 
 const queryClient = new QueryClient();
-const API_BASE_URL = import.meta.env.PROD 
-  ? 'https://user-registration-api-lrek.onrender.com' // Thay xxxx bằng URL thật từ Render
-  : 'http://localhost:3000';
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+
 interface FormData {
   email: string;
   password: string;
