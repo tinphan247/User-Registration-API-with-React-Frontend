@@ -40,7 +40,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const isAuthenticated = !!user; // Xác thực dựa trên user tồn tại
 
   // Giả lập lấy thông tin user từ Access Token (bằng cách decode token hoặc gọi API /me)
-  const decodeUserFromToken = (token: string): User => {
+  const decodeUserFromToken = (): User => { 
     // **Trong môi trường thực, bạn cần decode JWT token hoặc call /me API**
     // Để đơn giản, ta chỉ lấy email từ form login hoặc gọi mock API
     return { id: 'mock-id-123', email: 'user@example.com' }; 
@@ -51,7 +51,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     if (refreshToken && accessToken) {
         // Trong dự án thực, bạn sẽ gọi API /me ở đây để xác nhận token còn hiệu lực
         try {
-            setUser(decodeUserFromToken(accessToken));
+            setUser(decodeUserFromToken());
         } catch (e) {
             console.error("Invalid stored token, logging out.");
             handleLogout();
@@ -75,7 +75,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       setAccessToken(accessToken);
 
       // 3. Thiết lập User
-      setUser(userData || decodeUserFromToken(accessToken));
+      setUser(userData || decodeUserFromToken());
 
     } catch (e: any) {
       console.error('Login Failed:', e.response?.data?.message || e.message);

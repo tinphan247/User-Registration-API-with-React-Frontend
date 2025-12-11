@@ -7,7 +7,7 @@ import { useQuery } from '@tanstack/react-query';
 import axiosInstance from '../api/axiosInstance';
 
 // Hàm giả lập fetch Protected Data
-const fetchProtectedData = async (accessToken: string) => {
+const fetchProtectedData = async () => {
   // Axios Instance đã tự động gắn Access Token qua Interceptor
   const response = await axiosInstance.get('/auth/protected'); 
   return response.data;
@@ -19,7 +19,7 @@ const Dashboard: React.FC = () => {
   // Sử dụng React Query để fetch dữ liệu protected
   const { data, isLoading, error } = useQuery({
     queryKey: ['protectedData', accessToken],
-    queryFn: () => fetchProtectedData(accessToken!),
+    queryFn: () => fetchProtectedData(),
     enabled: !!accessToken, // Chỉ chạy query khi có Access Token
     retry: false, // Không cần retry vì Interceptor đã xử lý refresh
   });
