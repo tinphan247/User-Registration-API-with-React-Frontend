@@ -4,12 +4,9 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { UserModule } from './user/user.module';
-<<<<<<< HEAD
 import { AuthModule } from './auth/auth.module'; // IMPORT MỚI
 import { AccessJwtGuard } from './common/guards/access-jwt.guard'; // IMPORT MỚI
 import { APP_GUARD } from '@nestjs/core'; // IMPORT MỚI
-=======
->>>>>>> origin/main
 // import { User } from './user/user.entity'; // Nếu bạn có User Entity, hãy import nó
 
 @Module({
@@ -53,7 +50,6 @@ import { APP_GUARD } from '@nestjs/core'; // IMPORT MỚI
       inject: [ConfigService],
     }),
     UserModule,
-<<<<<<< HEAD
     AuthModule,
   ],
   providers: [
@@ -61,8 +57,6 @@ import { APP_GUARD } from '@nestjs/core'; // IMPORT MỚI
         provide: APP_GUARD, // ÁP DỤNG GUARD TOÀN CỤC
         useClass: AccessJwtGuard,
     },
-=======
->>>>>>> origin/main
   ],
 })
 export class AppModule {}
