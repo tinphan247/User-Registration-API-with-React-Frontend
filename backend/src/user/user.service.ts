@@ -1,8 +1,5 @@
-<<<<<<< HEAD
 // backend/src/user/user.service.ts (MODIFIED)
 
-=======
->>>>>>> origin/main
 import { Injectable, ConflictException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
@@ -38,7 +35,6 @@ export class UserService {
 
     const savedUser = await this.userRepository.save(newUser);
 
-<<<<<<< HEAD
     // Return response without password and hashedRt
     const { password: _, hashedRt: __, ...userWithoutSecrets } = savedUser;
 
@@ -65,18 +61,4 @@ export class UserService {
       { hashedRt },
     );
   }
-=======
-    // Return response without password
-    const { password: _, ...userWithoutPassword } = savedUser;
-
-    return {
-      message: 'User registered successfully',
-      user: userWithoutPassword,
-    };
-  }
-
-  async findByEmail(email: string): Promise<User | null> {
-    return this.userRepository.findOne({ where: { email } });
-  }
->>>>>>> origin/main
 }
